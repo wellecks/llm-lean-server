@@ -145,7 +145,7 @@ async def generate(request: Request) -> Response:
         else:
             sampling_params_[k] = v
 
-    sampling_params = SamplingParams(**request_dict)
+    sampling_params = SamplingParams(**sampling_params_)
     texts, scores = [], []
     prompt_fns = PROMPTS['default']['tactic']
     for prompt_fn in prompt_fns:
