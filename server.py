@@ -112,7 +112,7 @@ async def generate(request: Request) -> Response:
     """Generate completion for the request.
 
     The request should be a JSON object with the following fields:
-    - name: the model name.
+    - model: the model name.
     - key: the authorization key.
     - tactic_state: the tactic state.
     - context: context string.
@@ -121,7 +121,7 @@ async def generate(request: Request) -> Response:
     """
     request_dict = await request.json()
 
-    model = request_dict.pop('name', 'default')
+    model = request_dict.pop('model', 'default')
     tactic_state = request_dict.pop('tactic_state', '')
     context = request_dict.pop('context', '')
     prefix = request_dict.pop('prefix', '')
