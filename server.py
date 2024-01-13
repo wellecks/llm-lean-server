@@ -168,8 +168,8 @@ async def generate(request: Request) -> Response:
             score = output.cumulative_logprob/max(len(output.token_ids), 1)
             texts.append(text)
             scores.append(score)
-        texts, scores = _unique_sorted(texts, scores)
-        texts, scores = _filter(texts, scores)
+    texts, scores = _unique_sorted(texts, scores)
+    texts, scores = _filter(texts, scores)
 
     outputs = list(zip(texts, scores))
     ret = {"outputs": outputs}
