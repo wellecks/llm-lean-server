@@ -77,6 +77,14 @@ PROMPTS = {
     }
 }
 
+SAMPLING_PARAMS = {
+    'temperature' : 0.0,
+    'use_beam_search': True,
+    'n': 10,
+    'max_tokens': 256,
+    'stop': ['---', '</s>']
+}
+
 def _unique_sorted(texts, scores):
     texts_ = []
     scores_ = []
@@ -129,6 +137,13 @@ async def generate(request: Request) -> Response:
 
     if not check_key(key):
        return JSONResponse({"outputs": []}) 
+
+    sampling_params_ = {}
+    for k, v in SAMPLING_PARAMS:
+        if k in request_dict:
+            sampling_params_[k] = request_dict[k]
+        else:
+            sampling_params_[k] = v
 
     sampling_params = SamplingParams(**request_dict)
     texts, scores = [], []
