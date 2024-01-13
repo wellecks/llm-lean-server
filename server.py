@@ -164,7 +164,7 @@ async def generate(request: Request) -> Response:
 
         assert final_output is not None
         for output in final_output.outputs:
-            text = output.text #.replace(tokenizer.eos_token, '')
+            text = output.text 
             score = output.cumulative_logprob/max(len(output.token_ids), 1)
             texts.append(text)
             scores.append(score)
