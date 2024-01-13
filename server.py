@@ -81,7 +81,7 @@ SAMPLING_PARAMS = {
     'temperature' : 0.0,
     'use_beam_search': True,
     'n': 10,
-    'max_tokens': 256,
+    'max_tokens': 128,
     'stop': ['---', '\n']
 }
 
