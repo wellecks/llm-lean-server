@@ -139,7 +139,7 @@ async def generate(request: Request) -> Response:
        return JSONResponse({"outputs": []}) 
 
     sampling_params_ = {}
-    for k, v in SAMPLING_PARAMS:
+    for k, v in SAMPLING_PARAMS.items():
         if k in request_dict:
             sampling_params_[k] = request_dict[k]
         else:
