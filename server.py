@@ -82,7 +82,7 @@ SAMPLING_PARAMS = {
     'use_beam_search': True,
     'n': 10,
     'max_tokens': 256,
-    'stop': ['---', '</s>']
+    'stop': ['---', '\n']
 }
 
 def _unique_sorted(texts, scores):
