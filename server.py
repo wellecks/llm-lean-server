@@ -132,7 +132,8 @@ async def generate(request: Request) -> Response:
 
     sampling_params = SamplingParams(**request_dict)
     texts, scores = [], []
-    for prompt_fn in PROMPTS.get(model, 'default')['tactic']:
+    prompt_fns = PROMPTS['default']['tactic']
+    for prompt_fn in prompt_fns:
         request_id = random_uuid()
         prompt = prompt_fn(tactic_state, prefix, context)
         results_generator = engine.generate(prompt, sampling_params, request_id)
